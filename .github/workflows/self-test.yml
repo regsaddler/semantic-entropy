@@ -24,3 +24,5 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - name: Run the advertised self-test
         run: python -B semantic_entropy.py --self-test
+      - name: Run transport safety regressions
+        run: python -B -m unittest discover -s tests -v
