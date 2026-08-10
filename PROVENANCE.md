@@ -33,3 +33,10 @@ checks in the inspected environment. It does not establish truth detection,
 peer review, independent validation, scientific novelty, or deployment
 safety. The repository's v0.2 receipt is a preserved negative result, not
 evidence that the remaining method is correct.
+
+## Post-baseline hardening
+
+Later revisions may add bounded transport reads, endpoint validation, tests,
+documentation, and CI policy. Those changes are ordinary reviewed hardening;
+they do not alter the baseline hashes above or retroactively improve the
+pre-registered experimental result.
