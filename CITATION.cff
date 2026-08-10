@@ -1,0 +1,21 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it using the metadata below."
+title: "semantic-entropy: Zero-Dependency Answer-Stability Screen"
+version: 0.1.0
+type: software
+authors:
+  - family-names: "Saddler"
+    given-names: "Reg"
+license: MIT
+repository-code: "https://github.com/regsaddler/semantic-entropy"
+url: "https://github.com/regsaddler/semantic-entropy"
+abstract: >-
+  A zero-dependency Python implementation of semantic-entropy screening for
+  answer stability, with deterministic local checks and a published negative
+  result from a preregistered extension. Stability is not treated as truth.
+keywords:
+  - semantic entropy
+  - uncertainty estimation
+  - language models
+  - reproducibility
+  - negative results
