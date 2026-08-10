@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="360" viewBox="0 0 1200 360" role="img" aria-labelledby="title desc">
+  <title id="title">Semantic entropy screening path</title>
+  <desc id="desc">Repeated model answers are grouped by meaning, measured for semantic dispersion, and used only to decide whether follow-up is needed.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#071b2a"/>
+      <stop offset="1" stop-color="#102c3b"/>
+    </linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect width="1200" height="360" rx="24" fill="url(#bg)"/>
+  <path d="M250 180 H420 M650 180 H800 M990 180 H1080" fill="none" stroke="#507181" stroke-width="2" stroke-dasharray="5 8"/>
+  <g fill="#f2efe7" font-family="Georgia, 'Times New Roman', serif">
+    <text x="54" y="58" font-size="28">Repeated answers</text>
+    <text x="410" y="58" font-size="28">Meaning groups</text>
+    <text x="790" y="58" font-size="28">Dispersion screen</text>
+  </g>
+  <g font-family="'Courier New', monospace" font-size="13" fill="#9bb1ba">
+    <text x="55" y="320">same question / bounded samples</text>
+    <text x="410" y="320">semantic equivalence, not wording</text>
+    <text x="790" y="320">follow up; do not certify truth</text>
+  </g>
+  <g stroke="#78d4d1" stroke-width="2" fill="#143847">
+    <rect x="55" y="100" width="170" height="42" rx="10"/>
+    <rect x="55" y="159" width="170" height="42" rx="10"/>
+    <rect x="55" y="218" width="170" height="42" rx="10"/>
+  </g>
+  <g fill="#d9f3f0" font-family="'Courier New', monospace" font-size="14">
+    <text x="76" y="126">answer sample 01</text>
+    <text x="76" y="185">answer sample 02</text>
+    <text x="76" y="244">answer sample 03</text>
+  </g>
+  <g fill="none" stroke="#507181" stroke-width="1.5">
+    <path d="M225 121 C310 121 320 135 430 145"/>
+    <path d="M225 180 C310 180 330 160 430 155"/>
+    <path d="M225 239 C310 239 330 232 520 230"/>
+  </g>
+  <g filter="url(#glow)">
+    <circle cx="500" cy="150" r="58" fill="#163d4b" stroke="#78d4d1" stroke-width="2"/>
+    <circle cx="474" cy="139" r="9" fill="#d9f3f0"/>
+    <circle cx="505" cy="126" r="11" fill="#78d4d1"/>
+    <circle cx="526" cy="155" r="8" fill="#f2efe7"/>
+    <circle cx="493" cy="173" r="10" fill="#a7dcd8"/>
+    <circle cx="582" cy="231" r="32" fill="#342a2a" stroke="#c9825b" stroke-width="2"/>
+    <circle cx="571" cy="223" r="7" fill="#df9a70"/>
+    <circle cx="590" cy="238" r="9" fill="#c9825b"/>
+  </g>
+  <g fill="#9bb1ba" font-family="'Courier New', monospace" font-size="13">
+    <text x="456" y="153">group A</text>
+    <text x="548" y="277">group B</text>
+  </g>
+  <g>
+    <circle cx="885" cy="180" r="78" fill="#0b2231" stroke="#8da7b1" stroke-width="2"/>
+    <path d="M885 116 V180 L929 218" fill="none" stroke="#c9825b" stroke-width="7" stroke-linecap="round"/>
+    <circle cx="885" cy="180" r="10" fill="#f2efe7"/>
+    <text x="885" y="290" text-anchor="middle" fill="#d9f3f0" font-family="'Courier New', monospace" font-size="15">entropy + cluster count</text>
+  </g>
+  <g>
+    <rect x="1030" y="110" width="125" height="140" rx="16" fill="#142f3d" stroke="#78d4d1" stroke-width="2"/>
+    <circle cx="1062" cy="151" r="7" fill="#78d4d1"/>
+    <circle cx="1062" cy="181" r="7" fill="#c9825b"/>
+    <circle cx="1062" cy="211" r="7" fill="#8da7b1"/>
+    <g fill="#f2efe7" font-family="'Courier New', monospace" font-size="12">
+      <text x="1078" y="155">stable</text>
+      <text x="1078" y="185">mixed</text>
+      <text x="1078" y="215">scattered</text>
+    </g>
+  </g>
+</svg>

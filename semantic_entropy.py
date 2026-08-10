@@ -49,9 +49,56 @@ import json
 import math
 import re
 import sys
+import urllib.parse
 import urllib.request
 
-FLEET = os.environ.get("SE_ENDPOINT", "http://127.0.0.1:1234/v1")  # any OpenAI-compatible /v1 endpoint
+FLEET = os.environ.get("SE_ENDPOINT", "http://127.0.0.1:1234/v1")
+MAX_RESPONSE_BYTES = 8 * 1024 * 1024
+
+
+class _NoRedirect(urllib.request.HTTPRedirectHandler):
+    def redirect_request(self, req, fp, code, msg, headers, newurl):
+        return None
+
+
+def _normalize_endpoint(endpoint):
+    parts = urllib.parse.urlsplit(endpoint)
+    if parts.scheme not in {"http", "https"}:
+        raise ValueError("SE_ENDPOINT must use http or https")
+    if not parts.hostname:
+        raise ValueError("SE_ENDPOINT must include a hostname")
+    if parts.username is not None or parts.password is not None:
+        raise ValueError("SE_ENDPOINT must not embed credentials")
+    if parts.query or parts.fragment:
+        raise ValueError("SE_ENDPOINT must not include a query or fragment")
+    path = parts.path.rstrip("/")
+    return urllib.parse.urlunsplit((parts.scheme, parts.netloc, path, "", ""))
+
+
+def _endpoint_url(suffix):
+    return _normalize_endpoint(FLEET) + "/" + suffix.lstrip("/")
+
+
+def _json_request(target, timeout, max_response_bytes=MAX_RESPONSE_BYTES):
+    """Read one JSON response with a byte ceiling and no redirect following."""
+    if max_response_bytes <= 0:
+        raise ValueError("max_response_bytes must be greater than zero")
+    target_url = target.full_url if isinstance(target, urllib.request.Request) else target
+    _normalize_endpoint(target_url)
+    opener = urllib.request.build_opener(_NoRedirect())
+    with opener.open(target, timeout=timeout) as response:
+        content_length = response.headers.get("Content-Length")
+        if content_length is not None:
+            try:
+                declared_bytes = int(content_length)
+            except ValueError as error:
+                raise ValueError("invalid Content-Length") from error
+            if declared_bytes < 0 or declared_bytes > max_response_bytes:
+                raise ValueError("JSON response exceeds byte ceiling")
+        payload = response.read(max_response_bytes + 1)
+    if len(payload) > max_response_bytes:
+        raise ValueError("JSON response exceeds byte ceiling")
+    return json.loads(payload)
 
 
 def cluster_by_similarity(embeddings, threshold):
@@ -210,7 +257,7 @@ def parse_numbered_lines(text, k):
 
 # ── I/O (template-owned) ──────────────────────────────────────────────────────
 def _fleet_models():
-    return [m["id"] for m in json.load(urllib.request.urlopen(FLEET + "/models", timeout=10))["data"]]
+    return [m["id"] for m in _json_request(_endpoint_url("models"), timeout=10)["data"]]
 
 
 def _pick(models, prefs):
@@ -233,9 +280,9 @@ def sample(question, model, n, temp):
         body = json.dumps({"model": model, "temperature": temp, "max_tokens": 400,
                            "messages": [{"role": "user", "content": question}]}).encode()
         try:
-            r = json.load(urllib.request.urlopen(urllib.request.Request(
-                FLEET + "/chat/completions", data=body,
-                headers={"Content-Type": "application/json"}), timeout=120))
+            r = _json_request(urllib.request.Request(
+                _endpoint_url("chat/completions"), data=body,
+                headers={"Content-Type": "application/json"}), timeout=120)
             answers.append(_re_ws(r["choices"][0]["message"]["content"]))
             ok.append(True)
         except Exception as e:
@@ -246,8 +293,9 @@ def sample(question, model, n, temp):
 
 def embed(texts, model):
     body = json.dumps({"model": model, "input": texts}).encode()
-    r = json.load(urllib.request.urlopen(urllib.request.Request(
-        FLEET + "/embeddings", data=body, headers={"Content-Type": "application/json"}), timeout=120))
+    r = _json_request(urllib.request.Request(
+        _endpoint_url("embeddings"), data=body,
+        headers={"Content-Type": "application/json"}), timeout=120)
     return [d["embedding"] for d in r["data"]]
 
 
@@ -256,9 +304,9 @@ def _chat_once(model, prompt, temp, timeout=120, raw=False):
     was the smoke-caught bug that silently killed the paraphrase axis)."""
     body = json.dumps({"model": model, "temperature": temp, "max_tokens": 400,
                        "messages": [{"role": "user", "content": prompt}]}).encode()
-    r = json.load(urllib.request.urlopen(urllib.request.Request(
-        FLEET + "/chat/completions", data=body,
-        headers={"Content-Type": "application/json"}), timeout=timeout))
+    r = _json_request(urllib.request.Request(
+        _endpoint_url("chat/completions"), data=body,
+        headers={"Content-Type": "application/json"}), timeout=timeout)
     content = r["choices"][0]["message"]["content"]
     return content if raw else _re_ws(content)
 
