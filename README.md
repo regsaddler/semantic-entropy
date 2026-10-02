@@ -1,3 +1,7 @@
+<p>
+  <img src="assets/readme-header.svg" alt="SAMPLE. COMPARE. QUESTION. Answer stability is a signal. It is not truth." width="100%">
+</p>
+
 # semantic-entropy
 
 An answer-stability screen for language models, written in pure Python with
@@ -11,6 +15,8 @@ embed the answers, cluster them by similarity, and measure how widely they scatt
 ```text
 Question → sampled answers → embeddings → clusters → entropy + verdict
 ```
+
+---
 
 ## The failure, up front
 
@@ -26,6 +32,8 @@ We kept v0.1 and recorded the failure instead of tuning until it passed.
 
 The records in `receipts/` preserve the negative result, with marked redactions of internal
 identifiers. They describe this experiment, not a general verdict on the method.
+
+---
 
 ## Quickstart
 
@@ -74,6 +82,8 @@ Model runs send the question and generated answers to the configured endpoint.
 | `MIXED` | The answers show some variation in meaning. |
 | `SCATTERED` | The answers are spread across clusters; investigate before relying on them. |
 
+---
+
 ## Honest limits
 
 - Entropy measures answer stability, not truth. Treat verdicts as a screening
@@ -95,3 +105,9 @@ here. This tool stands alone and carries its own tests and failure record.
 
 MIT license. Issues and adversarial probes welcome; a reproduced failure is
 worth more to us than a compliment.
+
+---
+
+<sub>PUBLIC RESEARCH TOOLS</sub>
+
+[Reg Saddler](https://github.com/regsaddler) · [receipt-run-lite](https://github.com/regsaddler/receipt-run-lite) · [semantic-entropy](https://github.com/regsaddler/semantic-entropy) · [Difference Theory](https://differencetheory.com)
