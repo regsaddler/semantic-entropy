@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 344" role="img" aria-labelledby="title desc">
+<title id="title">SAMPLE. COMPARE. QUESTION.</title>
+<desc id="desc">Answer stability is a signal. It is not truth. Decorative geometric illustration; no measured results are depicted.</desc>
+<defs><pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" fill="none" stroke="#b9d3e3" stroke-opacity=".045"/></pattern></defs>
+<rect x="1" y="1" width="1278" height="342" rx="16" fill="#0b141e" stroke="#304252"/>
+<rect x="2" y="2" width="1276" height="340" rx="15" fill="url(#grid)"/>
+<path d="M52 48h30" stroke="#7dcfff" stroke-width="3"/>
+<text x="96" y="53" fill="#7dcfff" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="700" letter-spacing="2">PUBLIC TOOL / SEMANTIC-ENTROPY</text>
+<text x="50" y="139" fill="#f0f6fc" font-family="Arial, Helvetica, sans-serif" font-size="56" font-weight="700" letter-spacing="-1.8">SAMPLE.</text>
+<text x="50" y="203" fill="#f0f6fc" font-family="Arial, Helvetica, sans-serif" font-size="56" font-weight="700" letter-spacing="-1.8">COMPARE. QUESTION.</text>
+<text x="53" y="254" fill="#acbdcd" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" letter-spacing="0">Answer stability is a signal. It is not truth.</text>
+<path d="M53 292h650" stroke="#304252"/>
+<text x="53" y="316" fill="#8196aa" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" letter-spacing="2">SOURCE / METHOD / LIMITS</text>
+<path d="M745 64v217" stroke="#304252"/>
+<circle cx="832" cy="129" r="53" fill="#7dcfff" fill-opacity=".035" stroke="#7dcfff" stroke-opacity=".3"/><circle cx="812" cy="122" r="4" fill="#7dcfff"/><circle cx="845" cy="108" r="4" fill="#7dcfff"/><circle cx="854" cy="141" r="4" fill="#7dcfff"/><circle cx="822" cy="149" r="4" fill="#7dcfff"/><circle cx="832" cy="129" r="4" fill="#7dcfff"/><circle cx="1065" cy="119" r="53" fill="#7dcfff" fill-opacity=".035" stroke="#7dcfff" stroke-opacity=".3"/><circle cx="1045" cy="112" r="4" fill="#7dcfff"/><circle cx="1078" cy="98" r="4" fill="#7dcfff"/><circle cx="1087" cy="131" r="4" fill="#7dcfff"/><circle cx="1055" cy="139" r="4" fill="#7dcfff"/><circle cx="1065" cy="119" r="4" fill="#7dcfff"/><circle cx="967" cy="242" r="53" fill="#7dcfff" fill-opacity=".035" stroke="#7dcfff" stroke-opacity=".3"/><circle cx="947" cy="235" r="4" fill="#7dcfff"/><circle cx="980" cy="221" r="4" fill="#7dcfff"/><circle cx="989" cy="254" r="4" fill="#7dcfff"/><circle cx="957" cy="262" r="4" fill="#7dcfff"/><circle cx="967" cy="242" r="4" fill="#7dcfff"/><path d="M891 127h100M1060 178l-48 35M860 180l53 44" fill="none" stroke="#7dcfff" stroke-opacity=".2" stroke-width="2"/>
+</svg>
